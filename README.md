@@ -19,7 +19,30 @@ Step 5: Plot the magnitude spectrum with x-label and y-label with suitable title
 Step 6: Terminate the program.
 
 ## PROGRAM: 
-
+```
+clc; % clear screen 
+clear all; % clear screen 
+close all; % close all figure windows 
+Wc1=input('enter the value of Wc1=');  
+Wc2=input('enter the value of Wc2=');  
+N=input('enter the value of N='); 
+alpha=(N-1)/2;  
+eps=0.001;  
+%Band Stop Filter Coefficient 
+n=0:1:N-1;  
+hd=(sin(Wc1*(n-alpha+eps))-sin(Wc2*(n-alpha+eps))+sin(pi*(n-alpha+eps)))./(pi*(n-alpha+eps)) 
+%Bartlett Window Sequence  
+n=0:1:N-1;  
+wh= 1-(2*abs(n-alpha)/(N-1))
+hn=hd.*wh 
+% Plot the Band Stop Filter with Bartlett
+% Window Technique 
+w=0:0.01:pi;  
+h=freqz(hn,1,w); 
+plot(w/pi,abs(h),'ms');
+```
 ## OUTPUT:
+<img width="703" height="628" alt="Screenshot 2026-03-25 213548" src="https://github.com/user-attachments/assets/6f67f7a2-edb1-49b6-bd0b-81e9ffc37e52" />
 
 ## RESULT:
+![WhatsApp Image 2026-04-01 at 10 30 17 AM](https://github.com/user-attachments/assets/699efb89-fb6f-426f-909c-aaf49fba1feb)
